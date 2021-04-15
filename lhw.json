@@ -3,8 +3,9 @@
     "name": "LHW",
     "description": "https://github.com/javafast/QuantumultX",
     "task": [
+        "0 9 * * * https://raw.githubusercontent.com/Sunert/Scripts/master/Task/jddj.js, tag=京东到家, img-url=https://raw.githubusercontent.com/Orz-3/task/master/jddj.png,enabled=true",
         "0 9 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/ximalaya/ximalaya.js, tag=喜马拉雅, img-url=https://raw.githubusercontent.com/Orz-3/task/master/ximalaya.png,enabled=true",
-        "5 0 * * * https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/cmbchina.js, tag=招行信用卡, img-url=https://raw.githubusercontent.com/Orz-3/task/master/cmbchina.png,enabled=true",
+        "0 9 * * * https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/cmbchina.js, tag=招行信用卡, img-url=https://raw.githubusercontent.com/Orz-3/task/master/cmbchina.png,enabled=true",
         "0 9 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/yanxuan/yanxuan.js, tag=网易严选, img-url=https://raw.githubusercontent.com/Orz-3/task/master/yanxuan.png,enabled=true",
         "0 9 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/videoqq/videoqq.js, tag=腾讯视频, img-url=https://raw.githubusercontent.com/Orz-3/task/master/videoqq.png,enabled=true",
         "0 9 * * * https://raw.githubusercontent.com/NobyDa/Script/master/52pojie-DailyBonus/52pojie.js, tag=吾爱破解, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/52pj.png, enabled=true",
