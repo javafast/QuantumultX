@@ -2,7 +2,7 @@
    try {   
         var daJSON = JSON.parse(body);
         var tv = daJSON.data;
-        console.info(tv)
+        console.log("查询了一次")
         var list = tv.list;
         var i =0;
         var listPage=[]; 
