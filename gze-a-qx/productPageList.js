@@ -1,6 +1,8 @@
    var body = $response.body;
    try {   
-        var tv = body.data;
+        var daJSON = JSON.parse(body);
+        var tv = daJSON.data;
+        console.info(tv)
         var list = tv.list;
         var i =0;
         var listPage=[]; 
@@ -10,7 +12,7 @@
                 console.log(product["proName"])
                 continue;
             }
-            if (parseInt(product["memberPrice"]) >158000) {
+            if (parseInt(product["memberPrice"]) >138000) {
                 continue;
             }
            listPage[i] = product;
@@ -18,6 +20,7 @@
 
         }
         tv["list"] = listPage;
+        body = JSON.stringify(daJSON);
         $done(body)
     } catch(e) {
         $done(body)
