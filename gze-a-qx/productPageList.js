@@ -12,7 +12,7 @@
                 console.log(product["proName"])
                 continue;
             }
-            if (parseInt(product["memberPrice"]) >138000) {
+            if (parseInt(product["memberPrice"]) >158000) {
                 continue;
             }
            listPage[i] = product;
