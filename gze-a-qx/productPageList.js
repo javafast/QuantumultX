@@ -1,3 +1,6 @@
+   if ($response.statusCode != 200) {
+      $done(Null);
+   }
    var body = $response.body;
    try {   
         var daJSON = JSON.parse(body);
