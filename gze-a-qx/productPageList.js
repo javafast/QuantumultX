@@ -14,7 +14,7 @@
                 console.log(prodcutName)
                 continue;
             }
-            product["proIntegral"]=1
+            product["salePrice"]=1
             if (prodcutName.indexOf('茶') != -1) {
                 continue;
             }
