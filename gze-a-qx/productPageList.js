@@ -9,8 +9,12 @@
             let product =list[j];
             console.log(JSON.stringify(product))
             console.log("商品数量："+ product["proCount"])
+            
             if (parseInt(product["proCount"]) ==0) {
                 console.log(product["proName"])
+                continue;
+            }
+            if (str.indexOf('茶') != -1) {
                 continue;
             }
             if (parseInt(product["memberPrice"]) >158000) {
