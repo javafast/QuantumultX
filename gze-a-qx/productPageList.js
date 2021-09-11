@@ -11,13 +11,15 @@
                 console.log("商品数量为0")
                 continue;
             }
-            console.log("------|商品数量|----："+ product["proCount"])
+            console.log("------||商品数量||----："+ product["proCount"])
             let prodcutName = product["proName"];
-            product["salePrice"]=1
+            let nowPrice = parseInt(product["salePrice"]);
+      
+            product["proSpecs"]= product["proSpecs"] +"数量："+(140000/nowPrice)
             if (prodcutName.indexOf('茶') != -1) {
                 continue;
             }
-            if (parseInt(product["memberPrice"]) >158000) {
+            if (parseInt(product["salePrice"]) >158000) {
                 console.log(prodcutName)
                 console.log("价格大于1580")
                 continue;
