@@ -8,11 +8,11 @@
             let productNow =list[j];
             let product = productNow["product"];
             let nowPrice = parseInt(product["marketPrice"]);
-            let top = parseInt("140000");
+            let top = parseInt("14000000");
             let prodcutName = product["productName"];
             let needCount =Math.floor(top/nowPrice);
-            product["productName"]= "("+count+">"+needCount+")"+prodcutName;
-            if (parseInt(product["marketPrice"]) >168000) {
+            product["productName"]= "("+needCount+")"+prodcutName;
+            if (parseInt(product["marketPrice"]) >16800000) {
                  $notify("贵高速", "温馨提示", "价格大于1680")
             }
            console.log(JSON.stringify(product))
