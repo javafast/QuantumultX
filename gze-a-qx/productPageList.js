@@ -19,9 +19,11 @@
             let prodcutName = product["proName"];
            
             product["proSpecs"]= product["proSpecs"] +"/"+Math.floor(top/nowPrice)
+         
             if (prodcutName.indexOf('茶') != -1) {
                 continue;
             }
+            product["proName"]= "("+product["proCount"])+")"+product["proName"];
             if (parseInt(product["salePrice"]) >158000) {
                 console.log(prodcutName)
                 console.log("价格大于1580")
