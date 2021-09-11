@@ -17,9 +17,8 @@
             }
             console.log("------||商品数量||----："+ count)
             let prodcutName = product["proName"];
-           
-            /*product["proSpecs"]= product["proSpecs"] +"*"+Math.floor(top/nowPrice)*/
-           
+            var spec  = product["proSpecs"];
+            product["proSpecs"]= spec.substring(0,6)           
             if (prodcutName.indexOf('茶') != -1) {
                 continue;
             }
