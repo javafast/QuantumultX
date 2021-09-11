@@ -7,6 +7,7 @@
         var listPage=[]; 
         for (var j=0;  j < list.length; j++) {
             let product =list[j];
+            console.info(140000/nowPrice)
             if (parseInt(product["proCount"]) ==0) {
                 console.log("商品数量为0")
                 continue;
@@ -33,5 +34,6 @@
         body = JSON.stringify(daJSON);
         $done(body)
     } catch(e) {
+        console.log(e)
         $done(body)
     }
