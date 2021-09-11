@@ -5,7 +5,7 @@
         var tv = daJSON.data;
         var list = tv.list;
         var i =0;
-        int flag = 0;
+        var flag = 0;
         var listPage=[]; 
         for (var j=0;  j < list.length; j++) {
             let product =list[j];
