@@ -4,8 +4,8 @@ var body = $response.body;
         var list = daJSON.data;        
         for (var j=0;  j < list.length; j++) {
             let product =list[j];
-            let nowPrice = parseInt(product["salePrice"]);
-            let top = parseInt("140000");
+            let nowPrice = parseInt(product["integral"]);
+            let top = parseInt("1400");
             var count =  product["stock"];
             if (parseInt(count) ==0) {
                 $notify("贵高速", "温馨提示", "商品数量为0")
