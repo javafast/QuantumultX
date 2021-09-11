@@ -24,7 +24,8 @@
                 continue;
             }
             let needCount =Math.floor(top/nowPrice);
-            product["proName"]= "("+count+">"+needCount+")"+product["proName"];
+            var nowName = prodcutName.substring(0,10);
+            product["proName"]= "("+count+">"+needCount+")"+nowName;
             if (parseInt(product["salePrice"]) >158000) {
                 console.log(prodcutName)
                 console.log("价格大于1580")
