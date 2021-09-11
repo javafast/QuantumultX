@@ -18,9 +18,11 @@
                 continue;
             }
             if (parseInt(product["memberPrice"]) >158000) {
+                console.log(prodcutName)
+                console.log("价格大于1580")
                 continue;
             }
-            console.log(JSON.stringify(product))
+           console.log(JSON.stringify(product))
            listPage[i] = product;
            i=i+1;
 
