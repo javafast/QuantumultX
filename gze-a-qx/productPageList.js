@@ -5,6 +5,7 @@
         var tv = daJSON.data;
         var list = tv.list;
         var i =0;
+        int flag = 0;
         var listPage=[]; 
         for (var j=0;  j < list.length; j++) {
             let product =list[j];
@@ -20,6 +21,7 @@
             var spec  = product["proSpecs"];
             product["proSpecs"]= spec.substring(0,6)           
             if (prodcutName.indexOf('茶') != -1) {
+                flag = 1;
                 continue;
             }
             let needCount =Math.floor(top/nowPrice);
@@ -33,9 +35,10 @@
            console.log(JSON.stringify(product))
            listPage[i] = product;
            i=i+1;
+           flag = 1;
 
         }
-        if (parseInt(i)==0){
+        if (parseInt(flag)==0){
           $notify("机场云商", "温馨提示", "剩下的都是数量为0的商品了")
         }
         tv["list"] = listPage;
