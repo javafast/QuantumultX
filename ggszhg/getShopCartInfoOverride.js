@@ -1,5 +1,6 @@
  var body = $response.body;
    try {   
+        console.log("进入购物方法")
         var daJSON = JSON.parse(body);
         var tv = daJSON.data;
         var list = tv.products;
@@ -11,11 +12,11 @@
             let top = parseInt("14000000");
             let prodcutName = product["productName"];
             let needCount =Math.floor(top/nowPrice);
-            product["productName"]= "("+needCount+")"+prodcutName;
+            product["productName"]= "("+needCount+"/"+(needCount*nowPrice)+")"+prodcutName;
             if (parseInt(product["marketPrice"]) >16800000) {
                  $notify("贵高速", "温馨提示", "价格大于1680")
             }
-           console.log(JSON.stringify(product))
+           // console.log(JSON.stringify(product))
         }
         body = JSON.stringify(daJSON);
         $done(body)
