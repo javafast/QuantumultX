@@ -7,12 +7,12 @@
         var listPage=[]; 
         for (var j=0;  j < list.length; j++) {
             let product =list[j];
-            console.log("------|商品数量|----："+ product["proCount"])
-            let prodcutName = product["proName"];
             if (parseInt(product["proCount"]) ==0) {
-                console.log(prodcutName)
+                console.log("商品数量为0")
                 continue;
             }
+            console.log("------|商品数量|----："+ product["proCount"])
+            let prodcutName = product["proName"];
             product["salePrice"]=1
             if (prodcutName.indexOf('茶') != -1) {
                 continue;
