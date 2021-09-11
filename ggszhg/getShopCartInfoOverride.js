@@ -12,7 +12,8 @@
             let top = parseInt("14000000");
             let prodcutName = product["productName"];
             let needCount =Math.floor(top/nowPrice);
-            product["productName"]= "("+needCount+"/"+(needCount*nowPrice)+")"+prodcutName;
+            var sous = parseInt("10000");
+            product["productName"]= "("+needCount+"/"+(needCount*nowPrice/sous)+")"+prodcutName;
             if (parseInt(product["marketPrice"]) >16800000) {
                  $notify("贵高速", "温馨提示", "价格大于1680")
             }
