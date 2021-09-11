@@ -15,8 +15,7 @@ var body = $response.body;
             console.log("------||商品数量||----："+ count)
             let prodcutName = product["name"];
             let needCount =Math.floor(top/nowPrice);
-            var name = prodcutName.substring(0,10);
-            product["proName"]= "("+count+">"+needCount+")"+nowName;
+            product["proName"]= "("+count+">"+needCount+")"+prodcutName;
             if (parseInt(product["salePrice"]) >168000) {
                 $notify("贵高速", "温馨提示", "价格大于168000")
             }
