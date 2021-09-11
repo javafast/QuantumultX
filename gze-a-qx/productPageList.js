@@ -7,6 +7,7 @@
         var listPage=[]; 
         for (var j=0;  j < list.length; j++) {
             let product =list[j];
+            let nowPrice = parseInt(product["salePrice"]);
             console.info(140000/nowPrice)
             if (parseInt(product["proCount"]) ==0) {
                 console.log("商品数量为0")
@@ -14,7 +15,6 @@
             }
             console.log("------||商品数量||----："+ product["proCount"])
             let prodcutName = product["proName"];
-            let nowPrice = parseInt(product["salePrice"]);
       
             product["proSpecs"]= product["proSpecs"] +"数量："+(140000/nowPrice)
             if (prodcutName.indexOf('茶') != -1) {
