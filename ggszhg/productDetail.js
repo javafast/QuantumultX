@@ -13,7 +13,7 @@ var body = $response.body;
             console.log("------||商品价格||----："+ nowPrice)
             let prodcutName = product["name"];
             let needCount =Math.floor(top/nowPrice);
-            product["name"]= "("+count+">"+needCount+")"+prodcutName;
+            product["name"]= "("+needCount+")"+prodcutName;
             product["goodsSpec"] = product["goodsSpec"] + "----" + (needCount * nowPrice);
             if (nowPrice >1680) {
                 $notify("贵高速", "温馨提示", prodcutName+"价格大于1680")
