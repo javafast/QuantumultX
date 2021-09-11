@@ -12,6 +12,9 @@
             let top = parseInt("14000000");
             let prodcutName = product["productName"];
             let needCount =Math.ceil(top/nowPrice);
+            if((needCount * nowPrice) > parseInt("168000")){
+               needCount = needCount - 1;
+            }
             var sous = parseInt("10000");
             product["productName"]= "("+needCount+"/"+(needCount*nowPrice/sous)+")"+prodcutName;
             if (parseInt(product["marketPrice"]) >16800000) {
