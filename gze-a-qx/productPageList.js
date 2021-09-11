@@ -1,6 +1,4 @@
-   if ($response.statusCode != 200) {
-      $done(Null);
-   }
+
    var body = $response.body;
    try {   
         var daJSON = JSON.parse(body);
@@ -12,11 +10,12 @@
             let product =list[j];
             let nowPrice = parseInt(product["salePrice"]);
             let top = parseInt("140000");
+            var count =  product["proCount"];
             if (parseInt(product["proCount"]) ==0) {
                 console.log("商品数量为0")
                 continue;
             }
-            console.log("------||商品数量||----："+ product["proCount"])
+            console.log("------||商品数量||----："+ count)
             let prodcutName = product["proName"];
            
             product["proSpecs"]= product["proSpecs"] +"/"+Math.floor(top/nowPrice)
@@ -24,7 +23,7 @@
             if (prodcutName.indexOf('茶') != -1) {
                 continue;
             }
-            product["proName"]= "("+product["proCount"])+")"+product["proName"];
+            product["proName"]= "("+count+")"+product["proName"];
             if (parseInt(product["salePrice"]) >158000) {
                 console.log(prodcutName)
                 console.log("价格大于1580")
