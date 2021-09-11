@@ -1,9 +1,7 @@
 var body = $response.body;
    try {   
         var daJSON = JSON.parse(body);
-        var list = daJSON.data;
-        var listPage=[]; 
-        
+        var list = daJSON.data;        
         for (var j=0;  j < list.length; j++) {
             let product =list[j];
             let nowPrice = parseInt(product["salePrice"]);
@@ -19,10 +17,8 @@ var body = $response.body;
             if (parseInt(product["salePrice"]) >168000) {
                 $notify("贵高速", "温馨提示", "价格大于168000")
             }
-           console.log(JSON.stringify(product))
-           listPage[i] = product;
+           //console.log(JSON.stringify(product))
         }
-        daJSON["data"] = listPage;
         body = JSON.stringify(daJSON);
         $done(body)
     } catch(e) {
