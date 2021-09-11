@@ -9,8 +9,8 @@
             let product =list[j];
             let nowPrice = parseInt(product["salePrice"]);
             let top = parseInt("140000");
-            console.info(nowPrice)
-            console.info(top/nowPrice)
+            console.log(nowPrice)
+            console.log(top/nowPrice)
             if (parseInt(product["proCount"]) ==0) {
                 console.log("商品数量为0")
                 continue;
