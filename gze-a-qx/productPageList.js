@@ -1,5 +1,4 @@
-
-   var body = $response.body;
+var body = $response.body;
    try {   
         var daJSON = JSON.parse(body);
         var tv = daJSON.data;
@@ -9,39 +8,38 @@
         var listPage=[]; 
         for (var j=0;  j < list.length; j++) {
             let product =list[j];
-            let nowPrice = parseInt(product["salePrice"]);
-            let top = parseInt("140000");
-            var count =  product["proCount"];
-            if (parseInt(product["proCount"]) ==0) {
+            var count =  parseInt(product["proCount"]);
+            if (count==0) {
                 console.log("商品数量为0")
                 continue;
             }
+            let nowPrice = parseInt(product["proIntegral"]);
+            let top = parseInt("1400");
             console.log("------||商品数量||----："+ count)
-            let prodcutName = product["proName"];
-            var spec  = product["proSpecs"];
-            product["proSpecs"]= spec.substring(0,6)           
-            if (prodcutName.indexOf('茶') != -1) {
+            let prodcutName = product["proName"];     
+            if (prodcutName.indexOf('茶') != -1) {   
                 flag = 1;
                 continue;
             }
             let needCount =Math.floor(top/nowPrice);
             var nowName = prodcutName.substring(0,10);
             product["proName"]= "("+count+">"+needCount+")"+nowName;
-            if (parseInt(product["salePrice"]) >158000) {
+            if (parseInt(nowPrice >1580)) {
                 console.log(prodcutName)
                 console.log("价格大于1580")
                 continue;
             }
-           console.log(JSON.stringify(product))
+           //console.log(JSON.stringify(product))
            listPage[i] = product;
            i=i+1;
            flag = 1;
 
         }
         if (parseInt(flag)==0){
-          $notify("机场云商", "温馨提示", "剩下的都是数量为0的商品了")
+           $notify("机场云商", "温馨提示", "剩下的都是数量为0的商品了")
         }
         tv["list"] = listPage;
+  
         body = JSON.stringify(daJSON);
         $done(body)
     } catch(e) {
