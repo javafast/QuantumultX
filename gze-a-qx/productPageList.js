@@ -35,6 +35,9 @@
            i=i+1;
 
         }
+        if (parseInt(i)==0){
+          $notify("机场云商", "温馨提示", "剩下的都是数量为0的商品了")
+        }
         tv["list"] = listPage;
         body = JSON.stringify(daJSON);
         $done(body)
