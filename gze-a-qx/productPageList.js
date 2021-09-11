@@ -2,12 +2,14 @@
    try {   
         var daJSON = JSON.parse(body);
         var tv = daJSON.data;
-        console.log("查询了一次")
         var list = tv.list;
         var i =0;
         var listPage=[]; 
         for (var j=0;  j < list.length; j++) {
             let product =list[j];
+            console.log(JSON.stringify(daJSON))
+            console.log("商品数量："+ product["proCount"])
+          
             if (parseInt(product["proCount"]) ==0) {
                 console.log(product["proName"])
                 continue;
