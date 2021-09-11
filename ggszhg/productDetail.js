@@ -12,7 +12,7 @@ var body = $response.body;
             let nowPrice = parseInt(product["integral"]);
             let top = parseInt("1400");
             console.log("------||商品价格||----："+ nowPrice)
-            let needCount =Math.floor(top/nowPrice);
+            let needCount =Math.ceil(top/nowPrice);
             product["name"]= "("+needCount+")"+prodcutName;
             product["goodsSpec"] = product["goodsSpec"] + "----" + (needCount * nowPrice);
             if (nowPrice >1680) {
