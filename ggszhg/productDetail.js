@@ -13,6 +13,9 @@ var body = $response.body;
             let top = parseInt("1400");
             console.log("------||商品价格||----："+ nowPrice)
             let needCount =Math.ceil(top/nowPrice);
+            if((needCount * nowPrice) > parseInt("1680")){
+              needCount = needCount - 1;
+            }
             product["name"]= "("+needCount+")"+prodcutName;
             product["goodsSpec"] = product["goodsSpec"] + "----" + (needCount * nowPrice);
             if (nowPrice >1680) {
