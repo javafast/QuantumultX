@@ -31,6 +31,7 @@ var body = $response.body;
             if((needCount * nowPrice) > parseInt("1580")){
                needCount = needCount - 1;
             }
+             var nowName = prodcutName.substring(0,10);
             product["proName"]= "("+count+">"+needCount+")"+nowName;
            //console.log(JSON.stringify(product))
            listPage[i] = product;
