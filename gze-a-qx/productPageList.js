@@ -47,7 +47,16 @@ var body = $response.body;
         body = JSON.stringify(daJSON);
         $done(body)
     } catch(e) {
-        $notify("机场云商", "温馨提示", "JSON解析异常了")
+        var bj = {
+             "message": "操作成功",
+             "code": 0,
+             "data": {
+                 "page": 1,
+                 "pages": 5,
+                 "total": 50,
+                 "list": []
+             }
+         }
         console.log(e)
-        $done(body)
+        $done(bj)
     }
