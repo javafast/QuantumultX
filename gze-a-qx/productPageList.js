@@ -54,36 +54,7 @@ var body = $response.body;
                  "page": 1,
                  "pages": 5,
                  "total": 50,
-                 "list": [{
-    "proType": 2,
-    "marketPrice": 149900,
-    "parkFee": 0,
-    "sumQuantity": 0,
-    "supportSmartCard": 0,
-    "expressFee": 0,
-    "avgProScore": 4.8,
-    "orgId": "817425775685795840",
-    "proSpecs": "500ML",
-    "shipMode": 2,
-    "id": "830564228048879616",
-    "proName": "53°飞天茅台酒",
-    "iconUrl": "https://gza-1302529981.cos.ap-guangzhou.myqcloud.com/16313710111338539.jpg",
-    "proIntegralPrice": 149900,
-    "orgName": "贵州空港新元",
-    "salePrice": 149900,
-    "memberPrice": 149900,
-    "preferenceConfig": "",
-    "useCoupon": 0,
-    "sortValue": 99999,
-    "sellObject": 1,
-    "startAmount": 0,
-    "bigType": 1,
-    "typeId": "729031120640802816",
-    "proIntegral": 0,
-    "proCount": 13602,
-    "needIntegral": 700,
-    "status": 1
-}]
+                 "list": []
              }
          }
         console.log(e)
