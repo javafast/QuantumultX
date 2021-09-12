@@ -24,7 +24,7 @@ var body = $response.body;
             let needCount =Math.floor(top/nowPrice);
             var nowName = prodcutName.substring(0,10);
             product["proName"]= "("+count+">"+needCount+")"+nowName;
-            if (parseInt(nowPrice >1580)) {
+            if (nowPrice >1580) {
                 console.log(prodcutName)
                 console.log("价格大于1580")
                 continue;
@@ -35,7 +35,7 @@ var body = $response.body;
            flag = 1;
 
         }
-        if (parseInt(flag)==0){
+        if (parseInt(flag)==0 && tv.page >1 ){
            $notify("机场云商", "温馨提示", "剩下的都是数量为0的商品了")
         }
         tv["list"] = listPage;
