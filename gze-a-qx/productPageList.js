@@ -27,7 +27,7 @@ var body = $response.body;
                 console.log("价格大于1580")
                 continue;
             }
-            let needCount =Math.cill(top/nowPrice);
+            let needCount =Math.ceil(top/nowPrice);
             if((needCount * nowPrice) > parseInt("1580")){
                needCount = needCount - 1;
             }
