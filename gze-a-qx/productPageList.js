@@ -21,14 +21,17 @@ var body = $response.body;
                 flag = 1;
                 continue;
             }
-            let needCount =Math.floor(top/nowPrice);
-            var nowName = prodcutName.substring(0,10);
-            product["proName"]= "("+count+">"+needCount+")"+nowName;
+    
             if (nowPrice >1580) {
                 console.log(prodcutName)
                 console.log("价格大于1580")
                 continue;
             }
+            let needCount =Math.cill(top/nowPrice);
+            if((needCount * nowPrice) > parseInt("1580")){
+               needCount = needCount - 1;
+            }
+            product["proName"]= "("+count+">"+needCount+")"+nowName;
            //console.log(JSON.stringify(product))
            listPage[i] = product;
            i=i+1;
