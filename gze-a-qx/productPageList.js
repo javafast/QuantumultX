@@ -47,6 +47,7 @@ var body = $response.body;
         body = JSON.stringify(daJSON);
         $done(body)
     } catch(e) {
+        $notify("机场云商", "温馨提示", "JSON解析异常了")
         console.log(e)
         $done(body)
     }
