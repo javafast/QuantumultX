@@ -2,6 +2,7 @@ const cookieName = '贵州酒店'
 const cookieKey = 'chavy_cookie_gzhotelgroup'
 const chavy = init()
 const cookieVal = $request.headers['Cookie']
+chavy.msg(`${cookieName}`, '查询cookie', '')
 if (cookieVal) {
   if (chavy.setdata(cookieVal, cookieKey)) {
     chavy.msg(`${cookieName}`, '获取Cookie: 成功', '')
