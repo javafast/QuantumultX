@@ -1,0 +1,15 @@
+var body = $response.body;
+   try {   
+        console.log("进入播放")
+        var daJSON = JSON.parse(body);
+        var trackInfo = daJSON.trackInfo;
+      
+         trackInfo.isAuthorized=true;
+           // console.log(JSON.stringify(product))
+        
+        body = JSON.stringify(daJSON);
+        $done(body)
+    } catch(e) {
+        console.log(e)
+        $done(body)
+    }
