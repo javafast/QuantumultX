@@ -1,0 +1,19 @@
+var body = $response.body;
+   try {   
+        console.log("进入列表方法")
+        var daJSON = JSON.parse(body);
+        var tv = daJSON.data;
+        var list = tv.list;
+        var i =0;
+        for (var j=0;  j < list.length; j++) {
+            let productNow =list[j];
+         
+            productNow["isAuthorized"]= true;
+           // console.log(JSON.stringify(product))
+        }
+        body = JSON.stringify(daJSON);
+        $done(body)
+    } catch(e) {
+        console.log(e)
+        $done(body)
+    }
