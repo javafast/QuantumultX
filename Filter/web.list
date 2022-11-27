@@ -1,3 +1,6 @@
 # ------PayPal
 # > PayPal
 DOMAIN-SUFFIX,paypal.com,PROXY
+DOMAIN-SUFFIX,paypal.me,PROXY
+DOMAIN-SUFFIX,paypal-mktg.com,PROXY
+DOMAIN-SUFFIX,paypalobjects.com,PROXY
