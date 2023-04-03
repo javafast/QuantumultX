@@ -9,4 +9,6 @@ DOMAIN-SUFFIX,paypalobjects.com,PROXY
 DOMAIN-SUFFIX,capitalone.com,PROXY
 DOMAIN-SUFFIX,capitaloneshopping.com,PROXY
 
+# > chase.com
+DOMAIN-SUFFIX,chase.com,PROXY
 
