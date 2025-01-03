@@ -11,9 +11,11 @@ var body = $response.body;
       for (var j=0;  j < list.length; j++) {
         let productNow =list[j];
         var name = productNow["stockName"];
-        console.log(name)
         var send = productNow["send"];
-        if (send == 0) {
+        console.log(name)
+       console.log(send)
+        var send = productNow["send"];
+        if (send === 0) {
           productNow["send"] = 1;
         }
       }
