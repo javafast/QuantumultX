@@ -12,7 +12,7 @@ var body = $response.body;
         var name = productNow["stockName"];
         var send = productNow["send"];
         console.log(name)
-       console.log(send)
+        console.log(send)
         var send = productNow["send"];
         if (send === 0) {
           productNow["send"] = 1;
