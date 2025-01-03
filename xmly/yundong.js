@@ -10,12 +10,13 @@ var body = $response.body;
       for (var j=0;  j < list.length; j++) {
         let productNow =list[j];
         var name = productNow["stockName"];
+        var total = productNow["total"];
         var send = productNow["send"];
+        let result = Number(total) - Number(send);
         console.log(name)
-        console.log(send)
-        var send = productNow["send"];
-        if (send === 0) {
-          productNow["send"] = 1;
+        console.log(result)
+        if (result === 0) {
+          productNow["sent"] = total;
         }
       }
       console.log("修改结束")
