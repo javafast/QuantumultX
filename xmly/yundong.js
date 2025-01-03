@@ -1,17 +1,27 @@
 // Quantumult X 响应脚本示例
-let body = $response.body; // 获取响应体
-let obj = JSON.parse(body); // 解析 JSON
-  console.log("开始修改数量")
 
-// 遍历修改 sent 字段
-if (obj?.data?.stocks) {
-  obj.data.stocks.forEach(stock => {
-    if (stock.sent === 0) {
-      stock.sent = 1;
-    }
-  });
+console.log("开始修改数量")
+var body = $response.body;
+ try {   
+      console.log("进入修改")
+      var daJSON = JSON.parse(body);
+      var data = daJSON.data;
+      var list = data.stocks;
+      var i =0;
+      for (var j=0;  j < list.length; j++) {
+        let productNow =list[j];
+        var name = productNow["stockName"];
+        console.log(name)
+        var send = productNow["send"];
+        if (send == 0) {
+          productNow["send"] = 1;
+        }
+      }
+      body = JSON.stringify(daJSON);
+      $done(body)
+} catch(e) {
+      console.log(e)
+      $done(body)
 }
 
-// 将修改后的对象重新转换为 JSON
-body = JSON.stringify(obj);
-$done({ body }); // 返回修改后的响应体
+
