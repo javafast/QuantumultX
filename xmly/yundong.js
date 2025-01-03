@@ -3,7 +3,6 @@
 console.log("开始修改数量")
 var body = $response.body;
  try {   
-      console.log("进入修改")
       var daJSON = JSON.parse(body);
       var data = daJSON.data;
       var list = data.stocks;
@@ -19,6 +18,7 @@ var body = $response.body;
           productNow["send"] = 1;
         }
       }
+      console.log("修改结束")
       body = JSON.stringify(daJSON);
       $done(body)
 } catch(e) {
