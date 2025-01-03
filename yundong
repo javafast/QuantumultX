@@ -1,0 +1,14 @@
+let body = $response.body; 
+let obj = JSON.parse(body);
+console.log("开始修改数量0的为1个")
+
+if (obj?.data?.stocks) {
+  obj.data.stocks.forEach(stock => {
+    if (stock.sent === 0) {
+      stock.sent = 1;
+    }
+  });
+}
+
+body = JSON.stringify(obj);
+$done({ body });
