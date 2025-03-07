@@ -8,6 +8,7 @@ try {
         obj.value.equityPointActivityProductList.forEach(product => {
             if (product.skuStock !== undefined) {
                 console.log("修改 skuStock: " + product.skuStock + " -> 100");
+                product.spuName = product.spuName + "" + product.skuStock;
                 product.skuStock = 100;
             }
         });
