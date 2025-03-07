@@ -11,7 +11,6 @@ try {
     }
 
     body = JSON.stringify(obj);
-    console.log(obj)
     $done({ body });
 } catch (e) {
     console.log("解析 JSON 失败:", e);
