@@ -4,7 +4,7 @@ try {
     var obj = JSON.parse(body);
     console.log("修改中信九积分库存");
     if (obj.data) {
-        log.info("库存"+obj.data.stockNum)
+        console.log("库存 "+ obj.data.stockNum)
          // 仅在 stockNum = 0 时修改
         if (obj.data.stockNum == 0) {
             console.log("检测到库存售罄，修改返回值...");
