@@ -14,6 +14,11 @@ const rules = [
         domain: "mall-api2-demo.jw2008.cn",
         regex: /^https:\/\/mall-api2-demo\.jw2008\.cn\/mall-basic-portal\/v2\/portal\/pms\/equityPoint\/activityPage\/QYD1885509954898931712$/,
         action: "modifyActivityPage"
+    },
+    {
+        domain: "ldp.creditcard.ecitic.com",
+        regex: /^https:\/\/ldp\.creditcard\.ecitic\.com\/citiccard\/lottery-gateway-pay\/user-acts-group-qualification\.do$/,
+        action: "modifyQualification"
     }
 ];
 
@@ -53,6 +58,15 @@ try {
                             console.log(`修改 skuStock: ${product.skuStock} -> 100`);
                             product.spuName = `${product.spuName} - ${product.skuStock}`; // 改进拼接方式
                             product.skuStock = 100;
+                        }
+                    });
+                }
+                break;
+            case "modifyQualification":
+                if (obj.resultData && Array.isArray(obj.resultData)) {
+                    obj.resultData.forEach(item => {
+                        if (item.lotteryCount !== undefined) {
+                            item.lotteryCount = 10; // 修改 lotteryCount 数量为 10
                         }
                     });
                 }
