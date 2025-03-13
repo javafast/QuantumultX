@@ -1,4 +1,4 @@
-console.log("🔧 Quantumult X 多功能脚本已加载");
+console.log("🔧 Quantumult X");
 
 // 获取当前请求的 URL
 const url = $request ? $request.url : ($response ? $response.url : "");
