@@ -19,6 +19,16 @@ const rules = [
         domain: "ldp.creditcard.ecitic.com",
         regex: /^https:\/\/ldp\.creditcard\.ecitic\.com\/citiccard\/lottery-gateway-pay\/user-acts-group-qualification\.do$/,
         action: "modifyQualification"
+    },
+    {
+        domain: "mall-api2-demo.jw2008.cn",
+        regex: /^https:\/\/mall-api2-demo\.jw2008\.cn\/mall-basic-portal\/v2\/oms\/order\/equityPoint\/validOrder/,
+        action: "validOrder"
+    },
+    {
+        domain: "mall-api2-demo.jw2008.cn",
+        regex: /^https:\/\/mall-api2-demo\.jw2008\.cn\/mall-basic-portal\/v2\/oms\/order\/equityPoint\/confirmOrder/,
+        action: "confirmOrder"
     }
 ];
 
@@ -69,6 +79,22 @@ try {
                             item.lotteryCount = 10; // 修改 lotteryCount 数量为 10
                         }
                     });
+                }
+                break;
+            case "validOrder":
+                // 仅在 code = "-1" 且 success = false 时修改
+                if (obj.code === "-1") {
+                    console.log("validOrder检测到库存售罄，修改返回值...");
+                    obj.code = "0";  
+                    obj.success = true;
+                }
+                break;
+            case "confirmOrder":
+                // 仅在 code = "-1" 且 success = false 时修改
+                if (obj.code === "-1") {
+                    console.log("confirmOrder检测到库存售罄，修改返回值...");
+                    obj.code = "0";  
+                    obj.success = true;
                 }
                 break;
         }
