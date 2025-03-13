@@ -91,11 +91,7 @@ try {
                 break;
             case "confirmOrder":
                 // 仅在 code = "-1" 且 success = false 时修改
-                if (obj.code === "-1") {
-                    console.log("confirmOrder检测到库存售罄，修改返回值...");
-                    obj.code = "0";  
-                    obj.success = true;
-                }
+                console.log(JSON.stringify(obj, null, 2));  // 美化输出 JSON 格式
                 break;
         }
 
