@@ -33,22 +33,6 @@ try {
 
         // 处理每个 action
         switch (matchedRule.action) {
-            case "modifyStock":
-                modifyStock(obj);
-                break;
-
-            case "modifyActivityPage":
-                modifyActivityPage(obj);
-                break;
-
-            case "modifyQualification":
-                modifyQualification(obj);
-                break;
-
-            case "validOrder":
-                modifyValidOrder(obj);
-                break;
-
             case "confirmOrder":
                 modifyConfirmOrder(obj);
                 break;
@@ -66,47 +50,7 @@ try {
     $done({ body: "解析错误" });
 }
 
-// 以下是各个 action 的处理函数
 
-function modifyStock(obj) {
-    console.log("🛒 修改库存...");
-    if (obj.data && obj.data.stockNum === 0) {
-        obj.data.stockNum = 1000;
-        console.log("✅ 库存已修改为 1000");
-    }
-}
-
-function modifyActivityPage(obj) {
-    // 修改 equityPointActivityProductList.skuStock 值为 100
-    if (obj.value && obj.value.equityPointActivityProductList) {
-        obj.value.equityPointActivityProductList.forEach(product => {
-            if (product.skuStock !== undefined) {
-                console.log(`修改 skuStock: ${product.skuStock} -> 100`);
-                product.spuName = `${product.spuName} - ${product.skuStock}`; // 改进拼接方式
-                product.skuStock = 100;
-            }
-        });
-    }
-}
-
-function modifyQualification(obj) {
-    if (obj.resultData && Array.isArray(obj.resultData)) {
-        obj.resultData.forEach(item => {
-            if (item.lotteryCount !== undefined) {
-                item.lotteryCount = 10; // 修改 lotteryCount 数量为 10
-            }
-        });
-    }
-}
-
-function modifyValidOrder(obj) {
-    // 仅在 code = "-1" 且 success = false 时修改
-    if (obj.code === "-1" && !obj.success) {
-        console.log("validOrder检测到库存售罄，修改返回值...");
-        obj.code = "0";  
-        obj.success = true;
-    }
-}
 
 function modifyConfirmOrder(obj) {
     // 仅在 code = "-1" 且 success = false 时修改
