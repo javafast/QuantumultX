@@ -81,7 +81,6 @@ try {
                 modifyJifengDuiHuan(obj);
                 break;
 
-
             default:
                 console.log(`🔧 未知的 action: ${matchedRule.action}`);
         }
@@ -162,17 +161,18 @@ function modifyConfirmOrder(obj) {
         };
     }
 }
+
 function modifyJifengDuiHuan(obj) {
     // 仅在 code = "-1" 且 success = false 时修改
-    if (obj.resultCode === "0000000") {
+    if (obj.resultCode === "0000000" && obj.resultData) {
         // 检查每个商品的数据
-        data.resultData.forEach(item => {
-          const targetGoodsIds = ["ESXFDBCJ10", "ESXFDBCJ37", "ESXFDBCJ25"];
-          if (targetGoodsIds.includes(item.goodsId)) {
-            // 计算 goodsNumDaily 的一半，并向上取整
-            item.saleNumDaily = Math.ceil(item.goodsNumDaily / 2);
-            console.log(`已修改 ${item.goodsId} 的 saleNumDaily 为: ${item.saleNumDaily}`);
-          }
+        obj.resultData.forEach(item => {
+            const targetGoodsIds = ["ESXFDBCJ10", "ESXFDBCJ37", "ESXFDBCJ25"];
+            if (targetGoodsIds.includes(item.goodsId)) {
+                // 计算 goodsNumDaily 的一半，并向上取整
+                item.saleNumDaily = Math.ceil(item.goodsNumDaily / 2);
+                console.log(`已修改 ${item.goodsId} 的 saleNumDaily 为: ${item.saleNumDaily}`);
+            }
         });
     }
 }
