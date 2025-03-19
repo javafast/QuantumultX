@@ -131,7 +131,7 @@ function modifyValidOrder(obj) {
 function modifyConfirmOrder(obj) {
     // 仅在 code = "-1" 且 success = false 时修改
     if (obj.code === "-1" && !obj.success) {
-        console.log("validOrder检测到库存售罄，修改返回值...");
+        console.log("ConfirmOrder检测到库存售罄，修改返回值...");
         obj.code = "0";  
         obj.success = true;
         obj.value = {
