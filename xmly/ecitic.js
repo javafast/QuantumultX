@@ -3,7 +3,8 @@ console.log("🔧 Quantumult X");
 // 获取当前请求的 URL
 const url = $request ? $request.url : ($response ? $response.url : "");
 const hostname = url ? new URL(url).hostname : "";
-
+const savedMobile = $persistentStore.read("user_mobile") || "13091904140";
+console.log(`📞 获取手机号: ${savedMobile}`);
 // 定义规则
 const rules = [
     {
@@ -142,7 +143,7 @@ function modifyConfirmOrder(obj) {
             "merchantId": 38,
             "smsId": 16629,
             "productSpecTitle": "默认",
-            "mobile": "15110657298",
+            "mobile": savedMobile,
             "productTitle": "瑞幸咖啡32元券*10张",
             "productSpecId": 27050,
             "merchantName": "订单详情",
