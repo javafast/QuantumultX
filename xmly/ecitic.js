@@ -184,16 +184,21 @@ function modifyJifengDuiHuan(obj) {
 }
 
 function getTime(obj) {
-         if (obj.resultData && obj.resultData.timeMillis) {
-                let now = new Date();
-        let hours = now.getHours();
-        
-        // 如果当前时间小于上午 10 点
-        if (hours < 10) {
-            let tenAM = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0, 1);
-            obj.resultData.timeMillis = tenAM.getTime();
-            console.log(`⏰ 修改时间为 10:00:01，新的时间戳：${obj.resultData.timeMillis}`);
-        }
+    // 获取当前时间
+    const now = new Date();
+    
+    // 设定今天的上午 10:00:01
+    const tenAM = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0, 1, 0);
+    
+    // 获取时间戳
+    const tenAMTimestamp = tenAM.getTime();
+    
+    // 如果当前时间小于上午 10:00:00，则修改 timeMillis
+    if (now.getTime() < tenAMTimestamp) {
+        obj.resultData.timeMillis = tenAMTimestamp;
+        console.log("⏰ 当前时间小于 10:00:00，timeMillis 修改为:", obj.resultData.timeMillis);
+    } else {
+        console.log("✅ 当前时间已过 10:00:00，无需修改");
     }
 }
 
