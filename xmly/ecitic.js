@@ -40,7 +40,7 @@ const rules = [
     {
         domain: "ldp.creditcard.ecitic.com",
         regex: /^https:\/\/ldp\.creditcard\.ecitic\.com\/citiccard\/lottery-gateway-pay\/get-server-time\.do/,
-        action: "getTime"
+        action: "getServerTime"
     }
 ];
 
@@ -183,7 +183,7 @@ function modifyJifengDuiHuan(obj) {
     }
 }
 
-function getTime(obj) {
+function getServerTime(obj) {
     // 获取当前时间
     const now = new Date();
     
