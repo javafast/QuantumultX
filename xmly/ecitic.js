@@ -86,6 +86,9 @@ try {
             case "modifyJifengDuiHuan":
                 modifyJifengDuiHuan(obj);
                 break;
+            case "getServerTime":
+                getServerTime(obj);
+                break;
 
             default:
                 console.log(`🔧 未知的 action: ${matchedRule.action}`);
