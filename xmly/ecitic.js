@@ -184,7 +184,7 @@ function modifyJifengDuiHuan(obj) {
 }
 
 function getServerTime(obj) {
-    // 获取当前时间
+    // 获取当前时间,js
     const now = new Date();
     
     // 设定今天的上午 10:00:01
