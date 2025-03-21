@@ -36,6 +36,12 @@ const rules = [
         regex: /^https:\/\/ldp\.creditcard\.ecitic\.com\/citiccard\/lottery-gateway-pay\/prizes\.do\?actId=QDXFDBCJ/,
         action: "modifyJifengDuiHuan"
     }
+    ,
+    {
+        domain: "ldp.creditcard.ecitic.com",
+        regex: /^https:\/\/ldp\.creditcard\.ecitic\.com\/citiccard\/lottery-gateway-pay\/get-server-time\.do/,
+        action: "getTime"
+    }
 ];
 
 // 匹配规则
@@ -176,3 +182,18 @@ function modifyJifengDuiHuan(obj) {
         });
     }
 }
+
+function getTime(obj) {
+     if (obj.resultData && obj.resultData.timeMillis) {
+        let now = new Date();
+        let hours = now.getHours(); // 获取当前小时
+        
+        if (hours < 10) {
+            // 计算当天 10:00:01 的时间戳
+            let tenAM = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0, 1).getTime();
+            obj.resultData.timeMillis = tenAM;
+            console.log(`🕙 当前时间小于 10 点，修改 timeMillis 为 ${tenAM}`);
+        }
+    }
+}
+
