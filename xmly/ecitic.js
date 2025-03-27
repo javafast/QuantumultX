@@ -41,6 +41,10 @@ const rules = [
         domain: "ldp.creditcard.ecitic.com",
         regex: /^https:\/\/ldp\.creditcard\.ecitic\.com\/citiccard\/lottery-gateway-pay\/get-server-time\.do/,
         action: "getServerTime"
+    },{
+        domain: "mall-api2-demo.jw2008.cn",
+        regex: /^https:\/\/mall-api2-demo\.jw2008\.cn\/mall-basic-portal\/v2\/portal\/pms\/equityPoint\/activityPage\/QYD1885513038220345344$/,
+        action: "modifyActivityPageRuiXin"
     }
 ];
 
@@ -89,6 +93,9 @@ try {
             case "getServerTime":
                 getServerTime(obj);
                 break;
+            case "modifyActivityPageRuiXin":
+                modifyActivityPageRuiXin(obj);
+                break;
 
             default:
                 console.log(`🔧 未知的 action: ${matchedRule.action}`);
@@ -114,6 +121,18 @@ function modifyStock(obj) {
 }
 
 function modifyActivityPage(obj) {
+    // 修改 equityPointActivityProductList.skuStock 值为 100
+    if (obj.value && obj.value.equityPointActivityProductList) {
+        obj.value.equityPointActivityProductList.forEach(product => {
+            if (product.skuStock !== undefined) {
+                console.log(`修改 skuStock: ${product.skuStock} -> 100`);
+                product.spuName = `${product.spuName} - ${product.skuStock}`; // 改进拼接方式
+                product.skuStock = 100;
+            }
+        });
+    }
+}
+function modifyActivityPageRuiXin(obj) {
     // 修改 equityPointActivityProductList.skuStock 值为 100
     if (obj.value && obj.value.equityPointActivityProductList) {
         obj.value.equityPointActivityProductList.forEach(product => {
