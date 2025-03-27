@@ -119,7 +119,7 @@ function modifyActivityPage(obj) {
         obj.value.equityPointActivityProductList.forEach(product => {
             if (product.skuStock !== undefined) {
                 console.log(`修改 skuStock: ${product.skuStock} -> 100`);
-                product.spuName = `${product.spuName} - ${product.skuStock}`; // 改进拼接方式
+                product.spuName = `${product.spuName} - 不要传播`; // 改进拼接方式
                 product.skuStock = 100;
             }
         });
