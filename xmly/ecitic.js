@@ -217,7 +217,7 @@ function modifyStockNew(obj) {
         "equityPointActivityVO": {
           "idNum": 1885509954898931712,
           "activityId": "QYD1885509954898931712",
-          "equityName": "36+1新生活权益——改写",
+          "equityName": "36+1新生活权益——修改返回",
           "startDate": "2025-02-01 00:00:00",
           "endDate": "2025-12-31 23:59:59",
           "activityStyle": "https://mall-1253894390.cos.ap-guangzhou.myqcloud.com/goods/file/381c0107-655e-4937-85ce-c14ffe371e0f.jpg",
