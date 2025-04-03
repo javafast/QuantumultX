@@ -208,7 +208,6 @@ function getServerTime(obj) {
 
 function modifyActivityPageNew(obj) {
     console.log("✅ 进入修改库存");
-
     // 直接修改 obj 而不是返回一个新的对象
     obj.code = "0";
     obj.message = "成功";
