@@ -34,7 +34,7 @@ try {
         // 处理每个 action
         switch (matchedRule.action) {
             case "confirmOrder":
-                modifyConfirmOrder(obj);
+               obj = modifyConfirmOrder(obj);
                 break;
 
             default:
@@ -52,13 +52,12 @@ try {
 
 
 
-function modifyConfirmOrder(obj) {
-    // 仅在 code = "-1" 且 success = false 时修改
-    if (obj.code === "-1" && !obj.success) {
-        console.log("ConfirmOrder检测到库存售罄，修改返回值...");
-        obj.code = "0";  
-        obj.success = true;
-        obj.value = {
+function modifyConfirmOrder() {
+    console.log("✅ 订单确认返回新 JSON");
+    return {
+        "code": "0",
+        "success": true,
+        "value": {
             "productId": 16908,
             "productSpecPicture": "https://mall-1253894390.cos.ap-guangzhou.myqcloud.com/goods/image/4636c499-fed3-43fe-9590-1a8b9d008f44%40800x800",
             "orderAmount": "29.00",
@@ -66,7 +65,7 @@ function modifyConfirmOrder(obj) {
             "merchantId": 38,
             "smsId": 16629,
             "productSpecTitle": "默认",
-            "mobile": "15110657298",
+            "mobile": "13091904140",
             "productTitle": "瑞幸咖啡32元券*10张",
             "productSpecId": 27050,
             "merchantName": "订单详情",
@@ -74,6 +73,6 @@ function modifyConfirmOrder(obj) {
             "iseCardFlag": false,
             "rechargeType": "DIRECT_RECHARGE",
             "equityPointNumber": 1
-        };
-    }
+        }
+    };
 }
