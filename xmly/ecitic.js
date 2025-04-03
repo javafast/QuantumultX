@@ -106,7 +106,7 @@ try {
 // 以下是各个 action 的处理函数
 
 function modifyStock(obj) {
-    console.log("🛒 修改库存...");
+    console.log("🛒 修改库存...-");
     if (obj.data && obj.data.stockNum === 0) {
         obj.data.stockNum = 1000;
         console.log("✅ 库存已修改为 1000");
