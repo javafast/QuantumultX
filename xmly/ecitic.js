@@ -207,6 +207,8 @@ function getServerTime(obj) {
 }
 
 function modifyStockNew(obj) {
+  console.log("✅进入修改库存");
+
    // 直接构造返回 JSON
     return {
       "code": "0",
@@ -239,4 +241,5 @@ function modifyStockNew(obj) {
       },
       "success": true
     };
+
 }
