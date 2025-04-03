@@ -208,33 +208,47 @@ function getServerTime(obj) {
 
 function modifyActivityPageNew(obj) {
     console.log("✅ 进入修改库存");
-    // 直接修改 obj 而不是返回一个新的对象
-    obj.code = "0";
-    obj.message = "成功";
-    obj.value = {
-        "equityPointActivityVO": {
-            "idNum": 1885509954898931712,
-            "activityId": "QYD1885509954898931712",
-            "equityName": "36+1新生活权益——修改返回",
-            "startDate": "2025-02-01 00:00:00",
-            "endDate": "2025-12-31 23:59:59",
-            "activityStyle": "https://mall-1253894390.cos.ap-guangzhou.myqcloud.com/goods/file/381c0107-655e-4937-85ce-c14ffe371e0f.jpg",
-            "backgroundColor": "#ffffff",
-            "activityDesc": "<p>1、权益内容：</p><p>2025年1月1日-2025年3月31日，您可使用1个“36+1”新生活权益点+29元兑换10张瑞幸咖啡32元饮品券。具体权益及兑换金额详见页面下方“服务项目”内容。每月商品投放数量、卡券面额将于每月1号更新，具体以活动页面显示为准。</p><p><br></p><p>2、兑换说明：</p><p>1、瑞幸咖啡32元饮品券*10张：包含瑞幸咖啡32元饮品券*10张。活动期间每日权益总量100份。每日12点开始抢兑，先到先得，兑完为止。（每人每月限制兑换1次）</p><p>2、充值成功后，可前往瑞幸咖啡APP/小程序-我的-咖啡钱包账户内查看，如在使用瑞幸咖啡通用券过程中对产品或服务产生疑问，请联系瑞幸咖啡客服:4000100100。</p><p>3、用户通过瑞幸咖啡APP/小程序下单时，本券可用于抵扣相应面值的饮品费用(但不可抵扣另行选配的风味糖浆、奶油等附加费用及配送费）。1杯饮品限用1张券；不做退换，不予提现，不设找零抵用金额不可开具发票。</p><p>4、本券核销渠道为瑞幸咖啡APP/小程序，展示划线价为瑞幸咖啡建议零售价，可在全国门店购买饮品时使用。</p><p>5、本券为虚拟权益产品，兑换成功后，不退不换。需在有效期内使用，饮品券一经使用，无法支持退款。</p><p>6、本券不支持转赠，不可兑换现金，不找零，超额需补差价，本券不与其他优惠同享。</p><p>7、商品有效期：自充值成功之日期1年内有效（请在有效期内使用），逾期不退不换。</p><p>8、本产品由深圳市金文网络科技有限公司提供，兑换过程中如有疑问，请咨询服务商客服电话：4008077022，服务时间: 9: 00-18:30；</p><p>9、中信银行信用卡客服热线：400-889-5558</p><p><br></p><p><br></p>",
-            "agreementLinkUrl": "https://mall2-demo.jw2008.cn/index?id=6597d09e851ce92bdc65f1152&appkey=NIBjFewXdd2SB3DMxv5YRP7FUwPwlp"
+
+    // 目标 JSON 数据
+    const newJson = {
+        "code": "0",
+        "message": "成功",
+        "value": {
+            "equityPointActivityVO": {
+                "idNum": 1885509954898931712,
+                "activityId": "QYD1885509954898931712",
+                "equityName": "36+1新生活权益——修改返回",
+                "startDate": "2025-02-01 00:00:00",
+                "endDate": "2025-12-31 23:59:59",
+                "activityStyle": "https://mall-1253894390.cos.ap-guangzhou.myqcloud.com/goods/file/381c0107-655e-4937-85ce-c14ffe371e0f.jpg",
+                "backgroundColor": "#ffffff",
+                "activityDesc": "<p>1、权益内容：</p><p>2025年1月1日-2025年3月31日，您可使用1个“36+1”新生活权益点+29元兑换10张瑞幸咖啡32元饮品券。</p>",
+                "agreementLinkUrl": "https://mall2-demo.jw2008.cn/index?id=6597d09e851ce92bdc65f1152&appkey=NIBjFewXdd2SB3DMxv5YRP7FUwPwlp"
+            },
+            "equityPointActivityProductList": [
+                {
+                    "skuCode": "SKU0027050",
+                    "skuImg": "https://mall-1253894390.cos.ap-guangzhou.myqcloud.com/goods/image/4636c499-fed3-43fe-9590-1a8b9d008f44%40800x800",
+                    "spuName": "瑞幸咖啡32元券*10张",
+                    "skuName": "默认",
+                    "skuStock": 20,
+                    "skuPrice": "29.00",
+                    "skuEquityPoint": 1
+                }
+            ],
+            "userEquityPoint": "3.00",
+            "isAuth": true
         },
-        "equityPointActivityProductList": [
-            {
-                "skuCode": "SKU0027050",
-                "skuImg": "https://mall-1253894390.cos.ap-guangzhou.myqcloud.com/goods/image/4636c499-fed3-43fe-9590-1a8b9d008f44%40800x800",
-                "spuName": "瑞幸咖啡32元券*10张",
-                "skuName": "默认",
-                "skuStock": 20,
-                "skuPrice": "29.00",
-                "skuEquityPoint": 1
-            }
-        ],
-        "userEquityPoint": "3.00",
-        "isAuth": true
+        "success": true
     };
+
+    // **如果 body 是 JSON，则解析，否则直接替换**
+    try {
+        let parsedObj = JSON.parse(obj); // 尝试解析
+        Object.assign(parsedObj, newJson); // 替换数据
+        return parsedObj;
+    } catch (e) {
+        console.log("⚠️ body 不是 JSON，直接替换为 JSON 格式");
+        return newJson;
+    }
 }
