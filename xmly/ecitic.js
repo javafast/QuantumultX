@@ -80,7 +80,7 @@ try {
                 break;
 
             case "confirmOrder":
-                modifyConfirmOrder(obj);
+                obj = modifyConfirmOrder(obj);
                 break;
             case "modifyJifengDuiHuan":
                 modifyJifengDuiHuan(obj);
@@ -148,12 +148,10 @@ function modifyValidOrder(obj) {
 }
 
 function modifyConfirmOrder(obj) {
-    // 仅在 code = "-1" 且 success = false 时修改
-    if (obj.code === "-1" && !obj.success) {
-        console.log("ConfirmOrder检测到库存售罄，修改返回值...");
-        obj.code = "0";  
-        obj.success = true;
-        obj.value = {
+    return {
+        "code": "0",
+        "success": true,
+        "value": {
             "productId": 16908,
             "productSpecPicture": "https://mall-1253894390.cos.ap-guangzhou.myqcloud.com/goods/image/4636c499-fed3-43fe-9590-1a8b9d008f44%40800x800",
             "orderAmount": "29.00",
@@ -169,8 +167,8 @@ function modifyConfirmOrder(obj) {
             "iseCardFlag": false,
             "rechargeType": "DIRECT_RECHARGE",
             "equityPointNumber": 1
-        };
-    }
+        }
+    };
 }
 
 function modifyJifengDuiHuan(obj) {
