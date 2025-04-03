@@ -61,7 +61,6 @@ try {
     if ($response && body) {
         console.log(`📥 拦截到响应: ${url}`);
         let obj = JSON.parse(body);
-
         // 处理每个 action
         switch (matchedRule.action) {
             case "modifyStock":
@@ -69,7 +68,7 @@ try {
                 break;
 
             case "modifyActivityPage":
-                modifyActivityPageNew(obj);
+                obj = modifyActivityPageNew(obj);
                 break;
 
             case "modifyQualification":
@@ -243,12 +242,5 @@ function modifyActivityPageNew(obj) {
     };
 
     // **如果 body 是 JSON，则解析，否则直接替换**
-    try {
-        let parsedObj = JSON.parse(obj); // 尝试解析
-        Object.assign(parsedObj, newJson); // 替换数据
-        return parsedObj;
-    } catch (e) {
-        console.log("⚠️ body 不是 JSON，直接替换为 JSON 格式");
-        return newJson;
-    }
+   return newJson;
 }
