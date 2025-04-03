@@ -208,7 +208,7 @@ function getServerTime(obj) {
 
 function modifyStockNew(obj) {
    // 直接构造返回 JSON
-    obj = {
+    return {
       "code": "0",
       "message": "成功",
       "value": {
