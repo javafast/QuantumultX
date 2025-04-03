@@ -65,11 +65,11 @@ try {
         // 处理每个 action
         switch (matchedRule.action) {
             case "modifyStock":
-                modifyStockNew(obj);
+                modifyStock(obj);
                 break;
 
             case "modifyActivityPage":
-                modifyActivityPage(obj);
+                modifyActivityPageNew(obj);
                 break;
 
             case "modifyQualification":
@@ -206,7 +206,7 @@ function getServerTime(obj) {
     }
 }
 
-function modifyStockNew(obj) {
+function modifyActivityPageNew(obj) {
   console.log("✅进入修改库存");
 
    // 直接构造返回 JSON
