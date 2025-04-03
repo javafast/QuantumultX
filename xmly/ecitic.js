@@ -76,7 +76,7 @@ try {
                 break;
 
             case "validOrder":
-                modifyValidOrder(obj);
+                obj = modifyValidOrder(obj);
                 break;
 
             case "confirmOrder":
@@ -137,12 +137,14 @@ function modifyQualification(obj) {
 }
 
 function modifyValidOrder(obj) {
-    // 仅在 code = "-1" 且 success = false 时修改
-    if (obj.code === "-1" && !obj.success) {
-        console.log("validOrder检测到库存售罄，修改返回值...");
-        obj.code = "0";  
-        obj.success = true;
-    }
+    console.log("✅ 修改返回体");
+    // 目标 JSON 数据
+    const newJson = {
+        "code": "0",
+        "message": "成功",
+        "success": true
+    };
+   return newJson;
 }
 
 function modifyConfirmOrder(obj) {
