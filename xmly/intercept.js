@@ -18,9 +18,12 @@ $persistentStore.write(cookie, "claim_cookie");
 console.log("📌 Claim request captured.");
 console.log("Cookie saved: " + cookie);
 
+// 返回固定响应给原请求
 $done({
-  body: JSON.stringify({
-    code: 0,
-    msg: "Captured OK"
-  })
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+        msg: "已经拦截，等待发送",
+        status: "S00000"
+    })
 });
