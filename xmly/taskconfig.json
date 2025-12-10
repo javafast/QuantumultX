@@ -2,7 +2,7 @@
   "name": "Sample",
   "task": [
     {
-      "config": "0 0 * * * https://raw.githubusercontent.com/crossutility/Quantumult-X/master/sample-task.js#force-timeout=10000&method=POST, img-url=https://raw.githubusercontent.com/crossutility/Quantumult-X/master/quantumult-x.png, tag=Sample, enabled=true",
+      "config": "36 1 * * * https://ghproxy.net/https://raw.githubusercontent.com/javafast/QuantumultX/refs/heads/main/xmly/send-task.js#force-timeout=10000&method=POST, img-url=https://raw.githubusercontent.com/crossutility/Quantumult-X/master/quantumult-x.png, tag=Sample, enabled=true",
       "addons": "https://raw.githubusercontent.com/crossutility/Quantumult-X/master/sample-import-rewrite.snippet"
     }
   ],
