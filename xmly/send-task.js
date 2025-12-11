@@ -1,42 +1,33 @@
-let url = $persistentStore.read("claim_url");
-let method = $persistentStore.read("claim_method");
-let headers = $persistentStore.read("claim_headers");
-let body = $persistentStore.read("claim_body");
-let cookie = $persistentStore.read("claim_cookie");
+/*
+16 1 * * * https://raw.githubusercontent.com/<你的用户名>/qx-coffee-task/main/send-task.js, tag=咖啡自动发送
+*/
 
-// 检查数据
-if (!url || !method || !headers) {
-    console.log("❌ No stored request found. Please trigger it at least once.");
+let url = $pref.valueForKey("claim_url");
+let method = $pref.valueForKey("claim_method");
+let body = $pref.valueForKey("claim_body");
+let headersRaw = $pref.valueForKey("claim_headers");
+let cookie = $pref.valueForKey("claim_cookie");
+
+if (!url || !headersRaw) {
+    console.log("未找到拦截数据，请先手动触发一次 coffee/claim 请求");
     $done();
 }
 
-try {
-    headers = JSON.parse(headers);
-} catch (e) {
-    console.log("❌ Failed to parse headers: " + e);
-    $done();
-}
+let headers = JSON.parse(headersRaw);
+if (cookie) headers["Cookie"] = cookie;  // 确保 cookie 设置正确
 
-// 强制覆盖 cookie
-if (cookie) {
-    headers["Cookie"] = cookie;
-    headers["cookie"] = cookie;
-}
-
-let req = {
-    url: url,
-    method: method,
-    headers: headers,
-    body: body
+let request = {
+    url,
+    method,
+    headers,
+    body
 };
 
-console.log("📤 Sending stored claim request...");
-
-$task.fetch(req).then(resp => {
-    console.log("✔ Request sent. Status: " + resp.statusCode);
-    console.log("Response: " + resp.body);
+$task.fetch(request).then(resp => {
+    console.log("发送成功：" + resp.statusCode);
+    console.log(resp.body);
     $done();
 }).catch(err => {
-    console.log("❌ Request failed: " + err);
+    console.log("发送失败：" + err);
     $done();
 });
