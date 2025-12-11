@@ -1,29 +1,26 @@
-// 保存 URL
-$persistentStore.write($request.url, "claim_url");
+/*
+^https:\/\/mcc\.xunliandata\.com\/plus\/service\/coffee\/claim.* url script-request-body, type=module
+*/
 
-// 保存 method
-$persistentStore.write($request.method, "claim_method");
+let req = $request;
 
-// 保存 headers
-let headers = $request.headers || {};
-$persistentStore.write(JSON.stringify(headers), "claim_headers");
+// 保存数据
+$pref.setValueForKey(req.url, "claim_url");
+$pref.setValueForKey(req.method, "claim_method");
+$pref.setValueForKey(req.body || "", "claim_body");
 
-// 保存 body
-$persistentStore.write($request.body || "", "claim_body");
+let headers = req.headers || {};
+$pref.setValueForKey(JSON.stringify(headers), "claim_headers");
 
-// 单独保存 cookie
 let cookie = headers["Cookie"] || headers["cookie"] || "";
-$persistentStore.write(cookie, "claim_cookie");
+$pref.setValueForKey(cookie, "claim_cookie");
 
-console.log("📌 Claim request captured.");
-console.log("Cookie saved: " + cookie);
-
-// 返回固定响应给原请求
+// 返回拦截提示
 $done({
-    status: 200,
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-        msg: "已经拦截，等待发送",
-        status: "S00000"
-    })
+  status: 200,
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    msg: "已经拦截，等待自动发送",
+    status: "S00000"
+  })
 });
