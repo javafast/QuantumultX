@@ -1,9 +1,9 @@
 {
-  "name": "Sample",
+  "name": "喜茶",
   "task": [
     {
       "config": "36 1 * * * https://ghproxy.net/https://raw.githubusercontent.com/javafast/QuantumultX/refs/heads/main/xmly/send-task.js#force-timeout=10000&method=POST, img-url=https://raw.githubusercontent.com/crossutility/Quantumult-X/master/quantumult-x.png, tag=Sample, enabled=true"
     }
   ],
-  "description": "This is a sample."
+  "description": "喜茶自动执行"
 }
