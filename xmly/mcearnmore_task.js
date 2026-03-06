@@ -10,7 +10,7 @@ try {
             let old_surplus = p.surplus || 0;
             let old_name = p.name || "";
             if ([595, 596, 604].includes(p_id) && old_surplus === 0) {
-                p.name = `${old_name}${old_surplus}-破解`;
+                p.name = `[${old_name}${old_surplus}-破解]`;
                 p.surplus = 100; // 破解后变 100
             } else {
                 p.name = `${old_surplus}${old_name}`;
