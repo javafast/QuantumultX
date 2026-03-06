@@ -3,49 +3,47 @@ try {
     let obj = JSON.parse(body);
     if (obj.data && obj.data.activityPrizes) {
         let prizes = obj.data.activityPrizes;
+        const specialIds = [595, 596, 604];
 
-        // 1. 先执行你的“名称拼接/破解”逻辑
         for (let p of prizes) {
             let p_id = p.activityPrizeId;
-            let old_surplus = p.surplus || 0;
+            // 记录原始值用于判断和显示
+            let real_surplus = parseInt(p.surplus) || 0;
             let old_name = p.name || "";
-            if ([595, 596, 604].includes(p_id) && old_surplus === 0) {
-                p.name = `[${old_name}${old_surplus}-破解]`;
-                p.surplus = 100; // 破解后变 100
+
+            // 1. 处理名称拼接：surplus 追加到 name 前面
+            let newName = `${real_surplus}${old_name}`;
+            
+            // 2. 只有原始 surplus 为 0 时，才加上“-破解”
+            if (real_surplus === 0) {
+                newName += "-破解";
+            }
+            p.name = newName;
+
+            // 3. 处理排序权重：特定 ID 永远排最前
+            if (p_id === 595) {
+                p.surplus = 10003;
+            } else if (p_id === 596) {
+                p.surplus = 10002;
+            } else if (p_id === 604) {
+                p.surplus = 10001;
             } else {
-                p.name = `${old_surplus}${old_name}`;
+                // 普通商品按实际库存排序
+                p.surplus = real_surplus;
             }
         }
 
-        // 2. 执行排序逻辑
-        prizes.sort((a, b) => {
-            const specialIds = [595, 596, 604];
-            
-            // 获取优先级：0为最高，1为有货，2为无货
-            const getPriority = (item) => {
-                if (specialIds.includes(item.activityPrizeId)) return 0;
-                if (item.surplus > 0) return 1;
-                return 2;
-            };
+        // 4. 执行降序排列（权重大的在前）
+        prizes.sort((a, b) => (b.surplus - a.surplus));
 
-            let priA = getPriority(a);
-            let priB = getPriority(b);
-
-            if (priA !== priB) {
-                return priA - priB; // 优先级小的排前面
-            }
-            
-            // 如果同属于 specialIds，按指定顺序排
-            if (priA === 0) {
-                return specialIds.indexOf(a.activityPrizeId) - specialIds.indexOf(b.activityPrizeId);
-            }
-            
-            return 0; // 其他情况保持原序
+        // 5. (可选) 如果前端展示数字，可在此将 10000+ 还原回 100
+        prizes.forEach(p => {
+            if (p.surplus > 10000) p.surplus = 100;
         });
 
         body = JSON.stringify(obj);
     }
 } catch (e) {
-    console.log("排序出错: " + e);
+    console.log("QuanX 逻辑修正失败: " + e);
 }
 $done({ body });
