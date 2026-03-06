@@ -13,7 +13,7 @@ try {
                 p.name = `${old_name}${old_surplus}-破解`;
                 p.surplus = 100; // 破解后变 100
             } else {
-                p.name = `${old_name}${old_surplus}`;
+                p.name = `${old_surplus}${old_name}`;
             }
         }
 
