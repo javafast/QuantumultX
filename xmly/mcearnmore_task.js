@@ -17,7 +17,7 @@ try {
             let old_name = p.name || "";
 
             // 核心判定逻辑
-            if ((p_id === 595 || p_id === 596) && old_surplus === 0) {
+            if ((p_id === 595 || p_id === 596 || p_id ===604) && old_surplus === 0) {
                 p.name = `${old_name}${old_surplus}-破解`;
                 p.surplus = 100;
             } else {
