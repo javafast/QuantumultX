@@ -12,9 +12,9 @@ try {
             let old_name = p.name || "";
 
             // 1. 处理名称拼接：surplus 追加到 name 前面
-            let newName = `${real_surplus}${old_name}`;
+            let newName = `【${real_surplus}】${old_name}`;
             
-            // 2. 只有原始 surplus 为 0 时，才加上“-破解”
+            // 2. 只有原始 surplus 为 0 时，才加上“-【破解】”
             if (real_surplus === 0) {
                 newName += "-破解";
             }
