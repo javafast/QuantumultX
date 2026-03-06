@@ -2,7 +2,7 @@
  * Quantumult X 脚本：修改活动详情
  * 逻辑：匹配 activityPrizeId 为 595, 596 且 surplus 为 0 时，修改 name 并重置 surplus 为 100
  */
-
+console.log("改写返回体");
 let body = $response.body;
 try {
     let obj = JSON.parse(body);
