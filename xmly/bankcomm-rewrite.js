@@ -5,9 +5,9 @@ try {
 
     if (obj.data) {
 
-        // 1️⃣ shareContent.title 加后缀
-        if (obj.data.shareContent && obj.data.shareContent.title) {
-            obj.data.shareContent.title += "-破解";
+        // 1️⃣ productBaseInfoVO.productName 加后缀
+        if (obj.data.productBaseInfoVO && obj.data.productBaseInfoVO.productName) {
+            obj.data.productBaseInfoVO.productName += "-破解";
         }
 
         // 2️⃣ hasBuy
