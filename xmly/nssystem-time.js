@@ -8,7 +8,7 @@ try {
     .toISOString()
     .slice(0, 10);
 
-  const noon = Date.parse(today + "T12:00:00+08:00");
+  const noon = Date.parse(today + "T13:00:00+08:00");
 
   if (now < noon) {
     data.data.time = Math.floor(noon / 1000);
